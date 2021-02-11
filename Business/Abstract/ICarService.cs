@@ -1,4 +1,5 @@
 ﻿using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -8,9 +9,10 @@ namespace Business.Abstract
 {
     public interface ICarService
     {
-        List<Car> GetAll(Expression<Func<Car, bool>> filter = null);
-        List<Car> GetCarsByBrandId(int id);
-        List<Car> GetCarsByColorId(int id);
+        List<Car> GetAll();
+        List<CarDetailDto> GetCarDetails();
+        List<CarDetailDto> GetCarsByBrandId(int brandId);
+        List<CarDetailDto> GetCarsByColorId(int colorId);
         void Add(Car car);
         void Update(Car car);
         void Delete(Car car);
