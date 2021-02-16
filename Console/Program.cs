@@ -9,10 +9,30 @@ namespace Console
     {
         static void Main(string[] args)
         {
-            ListCars();
+            //ListCarDetails();
+            //ListUserDetails();
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            var result = rentalManager.Update(new Rental { Id = 2, ReturnDate = new DateTime(2021, 02, 15, 12, 12, 12) });
+            System.Console.WriteLine(result.Message);
         }
 
-        private static void ListCars()
+        private static void ListUserDetails()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+            var UserDetails = userManager.GetAll();
+
+            if (UserDetails.isSucceded)
+            {
+                foreach (var user in UserDetails.Data)
+                {
+                    System.Console.WriteLine("First Name: " + user.FirstName);
+                    System.Console.WriteLine("Last Name: " + user.LastName);
+                    System.Console.WriteLine("Mail: " + user.Mail);
+                }
+            }
+        }
+
+        private static void ListCarDetails()
         {
             CarManager carManager = new CarManager(new EfCarDal());
             var CarDetails = carManager.GetCarDetails();
