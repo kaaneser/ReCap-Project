@@ -37,8 +37,8 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
-            if (DateTime.Now.DayOfWeek == DayOfWeek.Saturday) // Saturday is weekend, throw error result
-                return new ErrorDataResult<List<Car>>(Messages.DataError);
+            //if (DateTime.Now.DayOfWeek == DayOfWeek.Saturday) // Saturday is weekend, throw error result
+            //    return new ErrorDataResult<List<Car>>(Messages.DataError);
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarsListed);
         }
 
